@@ -178,7 +178,7 @@ function myModelsList($scope) {
 function myModelsList2($scope, $compile) {
     $scope.list = globalCellGroup;
     $scope.list2 = currentModel;
-
+console.log("callde");
     $scope.setModel = function (model, num1){
         if(num1 == 0) {
             var result = $.grep(currentModel.neurons, function(e){return e.name == model; });
@@ -1655,8 +1655,13 @@ function addToGlobalModel() {
     if($('#elementType').val() === '0') {
         if($('#neuronType').val() === '0') {
             $('.neuronChannelType').hide();
-            var newParam = new modelParameters($('#modalneuronName').val(), "Izhikevich", new izhikevichParam(), "Personal");
-            currentModel.neurons.push(newParam);
+            console.log("Scope Check");
+            //var scope = angular.element($("#currentModelList")).scope();
+            //scope.$apply(function(){
+                var newParam = new modelParameters($('#modalneuronName').val(), "Izhikevich", new izhikevichParam(), "Personal");
+                currentModel.neurons.push(newParam);
+            //})
+            
         }
         else if($('#neuronType').val() === '1') {
             $('.neuronChannelType').show();
